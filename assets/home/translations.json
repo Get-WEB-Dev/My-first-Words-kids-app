@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "english": "Apple",
+      "amharic": "ፖም",
+      "afaan_oromo": "Apoolee",
+      "image": "apple.png",
+      "voice_english": "apple_en.mp3",
+      "voice_amharic": "apple_am.mp3",
+      "voice_oromo": "apple_or.mp3"
+    },
+    {
+      "id": 2,
+      "english": "Cat",
+      "amharic": "ድመት",
+      "afaan_oromo": "Adurree",
+      "image": "cat.png",
+      "voice_english": "cat_en.mp3",
+      "voice_amharic": "cat_am.mp3",
+      "voice_oromo": "cat_or.mp3"
+    },
+    {
+      "id": 3,
+      "english": "Sun",
+      "amharic": "ፀሐይ",
+      "afaan_oromo": "Biiftuu",
+      "image": "sun.png",
+      "voice_english": "sun_en.mp3",
+      "voice_amharic": "sun_am.mp3",
+      "voice_oromo": "sun_or.mp3"
+    },
+    {
+      "id": 4,
+      "english": "Water",
+      "amharic": "ውሃ",
+      "afaan_oromo": "Bishaan",
+      "image": "water.png",
+      "voice_english": "water_en.mp3",
+      "voice_amharic": "water_am.mp3",
+      "voice_oromo": "water_or.mp3"
+    },
+    {
+      "id": 5,
+      "english": "House",
+      "amharic": "ቤት",
+      "afaan_oromo": "Manaa",
+      "image": "house.png",
+      "voice_english": "house_en.mp3",
+      "voice_amharic": "house_am.mp3",
+      "voice_oromo": "house_or.mp3"
+    },
+    {
+      "id": 6,
+      "english": "Dog",
+      "amharic": "ውሻ",
+      "afaan_oromo": "Saree",
+      "image": "dog.png",
+      "voice_english": "dog_en.mp3",
+      "voice_amharic": "dog_am.mp3",
+      "voice_oromo": "dog_or.mp3"
+    },
+    {
+      "id": 7,
+      "english": "Book",
+      "amharic": "መጽሐፍ",
+      "afaan_oromo": "Kitaaba",
+      "image": "book.png",
+      "voice_english": "book_en.mp3",
+      "voice_amharic": "book_am.mp3",
+      "voice_oromo": "book_or.mp3"
+    },
+    {
+      "id": 8,
+      "english": "Tree",
+      "amharic": "ዛፍ",
+      "afaan_oromo": "Muka",
+      "image": "tree.png",
+      "voice_english": "tree_en.mp3",
+      "voice_amharic": "tree_am.mp3",
+      "voice_oromo": "tree_or.mp3"
+    },
+    {
+      "id": 9,
+      "english": "Milk",
+      "amharic": "ወተት",
+      "afaan_oromo": "Aannan",
+      "image": "milk.png",
+      "voice_english": "milk_en.mp3",
+      "voice_amharic": "milk_am.mp3",
+      "voice_oromo": "milk_or.mp3"
+    },
+    {
+      "id": 10,
+      "english": "Ball",
+      "amharic": "ኳስ",
+      "afaan_oromo": "Kubbaa",
+      "image": "ball.png",
+      "voice_english": "ball_en.mp3",
+      "voice_amharic": "ball_am.mp3",
+      "voice_oromo": "ball_or.mp3"
+    }
+  ]
+}

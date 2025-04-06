@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "type": "lesson", "id": 1 },
+    { "type": "lesson", "id": 2 },
+    { "type": "quiz", "id": 1 },
+    { "type": "lesson", "id": 3 },
+    { "type": "lesson", "id": 4 },
+    { "type": "quiz", "id": 2 }
+  ]
+}

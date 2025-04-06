@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "ABC Quiz (Lessons 1-2)",
+    "questions": [
+      {
+        "question": "Which letter comes after B?",
+        "options": ["A", "C", "D", "E"],
+        "correctAnswer": 1,
+        "image": "assets/letters/c.png"
+      },
+      {
+        "question": "Which word starts with 'E'?",
+        "options": ["Fish", "Giraffe", "Elephant", "House"],
+        "correctAnswer": 2,
+        "image": "assets/words/elephant.png"
+      },
+      {
+        "question": "Find the letter 'G'",
+        "options": ["G", "H", "J", "Q"],
+        "correctAnswer": 0,
+        "image": "assets/letters/g.png"
+      },
+      {
+        "question": "What does this picture represent?",
+        "options": ["House", "Dog", "Fish", "Apple"],
+        "image": "assets/words/dog.png",
+        "correctAnswer": 1
+      }
+    ],
+    "primaryColor": "#0288D1",
+    "secondaryColor": "#B3E5FC"
+  },
+  {
+    "id": 2,
+    "title": "Letters Quiz (Lessons 3-4)",
+    "questions": [
+      {
+        "question": "Which letter comes before K?",
+        "options": ["I", "J", "L", "M"],
+        "correctAnswer": 1,
+        "image": "assets/letters/j.png"
+      },
+      {
+        "question": "Which word starts with 'M'?",
+        "options": ["Nest", "Orange", "Monkey", "Panda"],
+        "correctAnswer": 2,
+        "image": "assets/words/monkey.png"
+      },
+      {
+        "question": "Find the letter 'P'",
+        "options": ["O", "P", "Q", "R"],
+        "correctAnswer": 1,
+        "image": "assets/letters/p.png"
+      },
+      {
+        "question": "What does this picture represent?",
+        "options": ["Lion", "Jellyfish", "Orange", "Kite"],
+        "image": "assets/words/orange.png",
+        "correctAnswer": 2
+      }
+    ],
+    "primaryColor": "#388E3C",
+    "secondaryColor": "#C8E6C9"
+  }
+]

@@ -1,0 +1,1794 @@
+[
+    {
+        "letter": "ሀ",
+        "name": "ሀ First Order",
+        "example_words": [
+            "ሀቤት",
+            "ሀምርት"
+        ]
+    },
+    {
+        "letter": "ሀu",
+        "name": "ሀ Second Order",
+        "example_words": [
+            "ሀuቤት",
+            "ሀuምርት"
+        ]
+    },
+    {
+        "letter": "ሀi",
+        "name": "ሀ Third Order",
+        "example_words": [
+            "ሀiቤት",
+            "ሀiምርት"
+        ]
+    },
+    {
+        "letter": "ሀa",
+        "name": "ሀ Fourth Order",
+        "example_words": [
+            "ሀaቤት",
+            "ሀaምርት"
+        ]
+    },
+    {
+        "letter": "ሀe",
+        "name": "ሀ Fifth Order",
+        "example_words": [
+            "ሀeቤት",
+            "ሀeምርት"
+        ]
+    },
+    {
+        "letter": "ሀə",
+        "name": "ሀ Sixth Order",
+        "example_words": [
+            "ሀəቤት",
+            "ሀəምርት"
+        ]
+    },
+    {
+        "letter": "ሀo",
+        "name": "ሀ Seventh Order",
+        "example_words": [
+            "ሀoቤት",
+            "ሀoምርት"
+        ]
+    },
+    {
+        "letter": "ለ",
+        "name": "ለ First Order",
+        "example_words": [
+            "ለቤት",
+            "ለምርት"
+        ]
+    },
+    {
+        "letter": "ለu",
+        "name": "ለ Second Order",
+        "example_words": [
+            "ለuቤት",
+            "ለuምርት"
+        ]
+    },
+    {
+        "letter": "ለi",
+        "name": "ለ Third Order",
+        "example_words": [
+            "ለiቤት",
+            "ለiምርት"
+        ]
+    },
+    {
+        "letter": "ለa",
+        "name": "ለ Fourth Order",
+        "example_words": [
+            "ለaቤት",
+            "ለaምርት"
+        ]
+    },
+    {
+        "letter": "ለe",
+        "name": "ለ Fifth Order",
+        "example_words": [
+            "ለeቤት",
+            "ለeምርት"
+        ]
+    },
+    {
+        "letter": "ለə",
+        "name": "ለ Sixth Order",
+        "example_words": [
+            "ለəቤት",
+            "ለəምርት"
+        ]
+    },
+    {
+        "letter": "ለo",
+        "name": "ለ Seventh Order",
+        "example_words": [
+            "ለoቤት",
+            "ለoምርት"
+        ]
+    },
+    {
+        "letter": "መ",
+        "name": "መ First Order",
+        "example_words": [
+            "መቤት",
+            "መምርት"
+        ]
+    },
+    {
+        "letter": "መu",
+        "name": "መ Second Order",
+        "example_words": [
+            "መuቤት",
+            "መuምርት"
+        ]
+    },
+    {
+        "letter": "መi",
+        "name": "መ Third Order",
+        "example_words": [
+            "መiቤት",
+            "መiምርት"
+        ]
+    },
+    {
+        "letter": "መa",
+        "name": "መ Fourth Order",
+        "example_words": [
+            "መaቤት",
+            "መaምርት"
+        ]
+    },
+    {
+        "letter": "መe",
+        "name": "መ Fifth Order",
+        "example_words": [
+            "መeቤት",
+            "መeምርት"
+        ]
+    },
+    {
+        "letter": "መə",
+        "name": "መ Sixth Order",
+        "example_words": [
+            "መəቤት",
+            "መəምርት"
+        ]
+    },
+    {
+        "letter": "መo",
+        "name": "መ Seventh Order",
+        "example_words": [
+            "መoቤት",
+            "መoምርት"
+        ]
+    },
+    {
+        "letter": "ሠ",
+        "name": "ሠ First Order",
+        "example_words": [
+            "ሠቤት",
+            "ሠምርት"
+        ]
+    },
+    {
+        "letter": "ሠu",
+        "name": "ሠ Second Order",
+        "example_words": [
+            "ሠuቤት",
+            "ሠuምርት"
+        ]
+    },
+    {
+        "letter": "ሠi",
+        "name": "ሠ Third Order",
+        "example_words": [
+            "ሠiቤት",
+            "ሠiምርት"
+        ]
+    },
+    {
+        "letter": "ሠa",
+        "name": "ሠ Fourth Order",
+        "example_words": [
+            "ሠaቤት",
+            "ሠaምርት"
+        ]
+    },
+    {
+        "letter": "ሠe",
+        "name": "ሠ Fifth Order",
+        "example_words": [
+            "ሠeቤት",
+            "ሠeምርት"
+        ]
+    },
+    {
+        "letter": "ሠə",
+        "name": "ሠ Sixth Order",
+        "example_words": [
+            "ሠəቤት",
+            "ሠəምርት"
+        ]
+    },
+    {
+        "letter": "ሠo",
+        "name": "ሠ Seventh Order",
+        "example_words": [
+            "ሠoቤት",
+            "ሠoምርት"
+        ]
+    },
+    {
+        "letter": "ረ",
+        "name": "ረ First Order",
+        "example_words": [
+            "ረቤት",
+            "ረምርት"
+        ]
+    },
+    {
+        "letter": "ረu",
+        "name": "ረ Second Order",
+        "example_words": [
+            "ረuቤት",
+            "ረuምርት"
+        ]
+    },
+    {
+        "letter": "ረi",
+        "name": "ረ Third Order",
+        "example_words": [
+            "ረiቤት",
+            "ረiምርት"
+        ]
+    },
+    {
+        "letter": "ረa",
+        "name": "ረ Fourth Order",
+        "example_words": [
+            "ረaቤት",
+            "ረaምርት"
+        ]
+    },
+    {
+        "letter": "ረe",
+        "name": "ረ Fifth Order",
+        "example_words": [
+            "ረeቤት",
+            "ረeምርት"
+        ]
+    },
+    {
+        "letter": "ረə",
+        "name": "ረ Sixth Order",
+        "example_words": [
+            "ረəቤት",
+            "ረəምርት"
+        ]
+    },
+    {
+        "letter": "ረo",
+        "name": "ረ Seventh Order",
+        "example_words": [
+            "ረoቤት",
+            "ረoምርት"
+        ]
+    },
+    {
+        "letter": "ሰ",
+        "name": "ሰ First Order",
+        "example_words": [
+            "ሰቤት",
+            "ሰምርት"
+        ]
+    },
+    {
+        "letter": "ሰu",
+        "name": "ሰ Second Order",
+        "example_words": [
+            "ሰuቤት",
+            "ሰuምርት"
+        ]
+    },
+    {
+        "letter": "ሰi",
+        "name": "ሰ Third Order",
+        "example_words": [
+            "ሰiቤት",
+            "ሰiምርት"
+        ]
+    },
+    {
+        "letter": "ሰa",
+        "name": "ሰ Fourth Order",
+        "example_words": [
+            "ሰaቤት",
+            "ሰaምርት"
+        ]
+    },
+    {
+        "letter": "ሰe",
+        "name": "ሰ Fifth Order",
+        "example_words": [
+            "ሰeቤት",
+            "ሰeምርት"
+        ]
+    },
+    {
+        "letter": "ሰə",
+        "name": "ሰ Sixth Order",
+        "example_words": [
+            "ሰəቤት",
+            "ሰəምርት"
+        ]
+    },
+    {
+        "letter": "ሰo",
+        "name": "ሰ Seventh Order",
+        "example_words": [
+            "ሰoቤት",
+            "ሰoምርት"
+        ]
+    },
+    {
+        "letter": "ሸ",
+        "name": "ሸ First Order",
+        "example_words": [
+            "ሸቤት",
+            "ሸምርት"
+        ]
+    },
+    {
+        "letter": "ሸu",
+        "name": "ሸ Second Order",
+        "example_words": [
+            "ሸuቤት",
+            "ሸuምርት"
+        ]
+    },
+    {
+        "letter": "ሸi",
+        "name": "ሸ Third Order",
+        "example_words": [
+            "ሸiቤት",
+            "ሸiምርት"
+        ]
+    },
+    {
+        "letter": "ሸa",
+        "name": "ሸ Fourth Order",
+        "example_words": [
+            "ሸaቤት",
+            "ሸaምርት"
+        ]
+    },
+    {
+        "letter": "ሸe",
+        "name": "ሸ Fifth Order",
+        "example_words": [
+            "ሸeቤት",
+            "ሸeምርት"
+        ]
+    },
+    {
+        "letter": "ሸə",
+        "name": "ሸ Sixth Order",
+        "example_words": [
+            "ሸəቤት",
+            "ሸəምርት"
+        ]
+    },
+    {
+        "letter": "ሸo",
+        "name": "ሸ Seventh Order",
+        "example_words": [
+            "ሸoቤት",
+            "ሸoምርት"
+        ]
+    },
+    {
+        "letter": "ቀ",
+        "name": "ቀ First Order",
+        "example_words": [
+            "ቀቤት",
+            "ቀምርት"
+        ]
+    },
+    {
+        "letter": "ቀu",
+        "name": "ቀ Second Order",
+        "example_words": [
+            "ቀuቤት",
+            "ቀuምርት"
+        ]
+    },
+    {
+        "letter": "ቀi",
+        "name": "ቀ Third Order",
+        "example_words": [
+            "ቀiቤት",
+            "ቀiምርት"
+        ]
+    },
+    {
+        "letter": "ቀa",
+        "name": "ቀ Fourth Order",
+        "example_words": [
+            "ቀaቤት",
+            "ቀaምርት"
+        ]
+    },
+    {
+        "letter": "ቀe",
+        "name": "ቀ Fifth Order",
+        "example_words": [
+            "ቀeቤት",
+            "ቀeምርት"
+        ]
+    },
+    {
+        "letter": "ቀə",
+        "name": "ቀ Sixth Order",
+        "example_words": [
+            "ቀəቤት",
+            "ቀəምርት"
+        ]
+    },
+    {
+        "letter": "ቀo",
+        "name": "ቀ Seventh Order",
+        "example_words": [
+            "ቀoቤት",
+            "ቀoምርት"
+        ]
+    },
+    {
+        "letter": "በ",
+        "name": "በ First Order",
+        "example_words": [
+            "በቤት",
+            "በምርት"
+        ]
+    },
+    {
+        "letter": "በu",
+        "name": "በ Second Order",
+        "example_words": [
+            "በuቤት",
+            "በuምርት"
+        ]
+    },
+    {
+        "letter": "በi",
+        "name": "በ Third Order",
+        "example_words": [
+            "በiቤት",
+            "በiምርት"
+        ]
+    },
+    {
+        "letter": "በa",
+        "name": "በ Fourth Order",
+        "example_words": [
+            "በaቤት",
+            "በaምርት"
+        ]
+    },
+    {
+        "letter": "በe",
+        "name": "በ Fifth Order",
+        "example_words": [
+            "በeቤት",
+            "በeምርት"
+        ]
+    },
+    {
+        "letter": "በə",
+        "name": "በ Sixth Order",
+        "example_words": [
+            "በəቤት",
+            "በəምርት"
+        ]
+    },
+    {
+        "letter": "በo",
+        "name": "በ Seventh Order",
+        "example_words": [
+            "በoቤት",
+            "በoምርት"
+        ]
+    },
+    {
+        "letter": "ተ",
+        "name": "ተ First Order",
+        "example_words": [
+            "ተቤት",
+            "ተምርት"
+        ]
+    },
+    {
+        "letter": "ተu",
+        "name": "ተ Second Order",
+        "example_words": [
+            "ተuቤት",
+            "ተuምርት"
+        ]
+    },
+    {
+        "letter": "ተi",
+        "name": "ተ Third Order",
+        "example_words": [
+            "ተiቤት",
+            "ተiምርት"
+        ]
+    },
+    {
+        "letter": "ተa",
+        "name": "ተ Fourth Order",
+        "example_words": [
+            "ተaቤት",
+            "ተaምርት"
+        ]
+    },
+    {
+        "letter": "ተe",
+        "name": "ተ Fifth Order",
+        "example_words": [
+            "ተeቤት",
+            "ተeምርት"
+        ]
+    },
+    {
+        "letter": "ተə",
+        "name": "ተ Sixth Order",
+        "example_words": [
+            "ተəቤት",
+            "ተəምርት"
+        ]
+    },
+    {
+        "letter": "ተo",
+        "name": "ተ Seventh Order",
+        "example_words": [
+            "ተoቤት",
+            "ተoምርት"
+        ]
+    },
+    {
+        "letter": "ቸ",
+        "name": "ቸ First Order",
+        "example_words": [
+            "ቸቤት",
+            "ቸምርት"
+        ]
+    },
+    {
+        "letter": "ቸu",
+        "name": "ቸ Second Order",
+        "example_words": [
+            "ቸuቤት",
+            "ቸuምርት"
+        ]
+    },
+    {
+        "letter": "ቸi",
+        "name": "ቸ Third Order",
+        "example_words": [
+            "ቸiቤት",
+            "ቸiምርት"
+        ]
+    },
+    {
+        "letter": "ቸa",
+        "name": "ቸ Fourth Order",
+        "example_words": [
+            "ቸaቤት",
+            "ቸaምርት"
+        ]
+    },
+    {
+        "letter": "ቸe",
+        "name": "ቸ Fifth Order",
+        "example_words": [
+            "ቸeቤት",
+            "ቸeምርት"
+        ]
+    },
+    {
+        "letter": "ቸə",
+        "name": "ቸ Sixth Order",
+        "example_words": [
+            "ቸəቤት",
+            "ቸəምርት"
+        ]
+    },
+    {
+        "letter": "ቸo",
+        "name": "ቸ Seventh Order",
+        "example_words": [
+            "ቸoቤት",
+            "ቸoምርት"
+        ]
+    },
+    {
+        "letter": "ኀ",
+        "name": "ኀ First Order",
+        "example_words": [
+            "ኀቤት",
+            "ኀምርት"
+        ]
+    },
+    {
+        "letter": "ኀu",
+        "name": "ኀ Second Order",
+        "example_words": [
+            "ኀuቤት",
+            "ኀuምርት"
+        ]
+    },
+    {
+        "letter": "ኀi",
+        "name": "ኀ Third Order",
+        "example_words": [
+            "ኀiቤት",
+            "ኀiምርት"
+        ]
+    },
+    {
+        "letter": "ኀa",
+        "name": "ኀ Fourth Order",
+        "example_words": [
+            "ኀaቤት",
+            "ኀaምርት"
+        ]
+    },
+    {
+        "letter": "ኀe",
+        "name": "ኀ Fifth Order",
+        "example_words": [
+            "ኀeቤት",
+            "ኀeምርት"
+        ]
+    },
+    {
+        "letter": "ኀə",
+        "name": "ኀ Sixth Order",
+        "example_words": [
+            "ኀəቤት",
+            "ኀəምርት"
+        ]
+    },
+    {
+        "letter": "ኀo",
+        "name": "ኀ Seventh Order",
+        "example_words": [
+            "ኀoቤት",
+            "ኀoምርት"
+        ]
+    },
+    {
+        "letter": "ነ",
+        "name": "ነ First Order",
+        "example_words": [
+            "ነቤት",
+            "ነምርት"
+        ]
+    },
+    {
+        "letter": "ነu",
+        "name": "ነ Second Order",
+        "example_words": [
+            "ነuቤት",
+            "ነuምርት"
+        ]
+    },
+    {
+        "letter": "ነi",
+        "name": "ነ Third Order",
+        "example_words": [
+            "ነiቤት",
+            "ነiምርት"
+        ]
+    },
+    {
+        "letter": "ነa",
+        "name": "ነ Fourth Order",
+        "example_words": [
+            "ነaቤት",
+            "ነaምርት"
+        ]
+    },
+    {
+        "letter": "ነe",
+        "name": "ነ Fifth Order",
+        "example_words": [
+            "ነeቤት",
+            "ነeምርት"
+        ]
+    },
+    {
+        "letter": "ነə",
+        "name": "ነ Sixth Order",
+        "example_words": [
+            "ነəቤት",
+            "ነəምርት"
+        ]
+    },
+    {
+        "letter": "ነo",
+        "name": "ነ Seventh Order",
+        "example_words": [
+            "ነoቤት",
+            "ነoምርት"
+        ]
+    },
+    {
+        "letter": "ኘ",
+        "name": "ኘ First Order",
+        "example_words": [
+            "ኘቤት",
+            "ኘምርት"
+        ]
+    },
+    {
+        "letter": "ኘu",
+        "name": "ኘ Second Order",
+        "example_words": [
+            "ኘuቤት",
+            "ኘuምርት"
+        ]
+    },
+    {
+        "letter": "ኘi",
+        "name": "ኘ Third Order",
+        "example_words": [
+            "ኘiቤት",
+            "ኘiምርት"
+        ]
+    },
+    {
+        "letter": "ኘa",
+        "name": "ኘ Fourth Order",
+        "example_words": [
+            "ኘaቤት",
+            "ኘaምርት"
+        ]
+    },
+    {
+        "letter": "ኘe",
+        "name": "ኘ Fifth Order",
+        "example_words": [
+            "ኘeቤት",
+            "ኘeምርት"
+        ]
+    },
+    {
+        "letter": "ኘə",
+        "name": "ኘ Sixth Order",
+        "example_words": [
+            "ኘəቤት",
+            "ኘəምርት"
+        ]
+    },
+    {
+        "letter": "ኘo",
+        "name": "ኘ Seventh Order",
+        "example_words": [
+            "ኘoቤት",
+            "ኘoምርት"
+        ]
+    },
+    {
+        "letter": "አ",
+        "name": "አ First Order",
+        "example_words": [
+            "አቤት",
+            "አምርት"
+        ]
+    },
+    {
+        "letter": "አu",
+        "name": "አ Second Order",
+        "example_words": [
+            "አuቤት",
+            "አuምርት"
+        ]
+    },
+    {
+        "letter": "አi",
+        "name": "አ Third Order",
+        "example_words": [
+            "አiቤት",
+            "አiምርት"
+        ]
+    },
+    {
+        "letter": "አa",
+        "name": "አ Fourth Order",
+        "example_words": [
+            "አaቤት",
+            "አaምርት"
+        ]
+    },
+    {
+        "letter": "አe",
+        "name": "አ Fifth Order",
+        "example_words": [
+            "አeቤት",
+            "አeምርት"
+        ]
+    },
+    {
+        "letter": "አə",
+        "name": "አ Sixth Order",
+        "example_words": [
+            "አəቤት",
+            "አəምርት"
+        ]
+    },
+    {
+        "letter": "አo",
+        "name": "አ Seventh Order",
+        "example_words": [
+            "አoቤት",
+            "አoምርት"
+        ]
+    },
+    {
+        "letter": "ከ",
+        "name": "ከ First Order",
+        "example_words": [
+            "ከቤት",
+            "ከምርት"
+        ]
+    },
+    {
+        "letter": "ከu",
+        "name": "ከ Second Order",
+        "example_words": [
+            "ከuቤት",
+            "ከuምርት"
+        ]
+    },
+    {
+        "letter": "ከi",
+        "name": "ከ Third Order",
+        "example_words": [
+            "ከiቤት",
+            "ከiምርት"
+        ]
+    },
+    {
+        "letter": "ከa",
+        "name": "ከ Fourth Order",
+        "example_words": [
+            "ከaቤት",
+            "ከaምርት"
+        ]
+    },
+    {
+        "letter": "ከe",
+        "name": "ከ Fifth Order",
+        "example_words": [
+            "ከeቤት",
+            "ከeምርት"
+        ]
+    },
+    {
+        "letter": "ከə",
+        "name": "ከ Sixth Order",
+        "example_words": [
+            "ከəቤት",
+            "ከəምርት"
+        ]
+    },
+    {
+        "letter": "ከo",
+        "name": "ከ Seventh Order",
+        "example_words": [
+            "ከoቤት",
+            "ከoምርት"
+        ]
+    },
+    {
+        "letter": "ኸ",
+        "name": "ኸ First Order",
+        "example_words": [
+            "ኸቤት",
+            "ኸምርት"
+        ]
+    },
+    {
+        "letter": "ኸu",
+        "name": "ኸ Second Order",
+        "example_words": [
+            "ኸuቤት",
+            "ኸuምርት"
+        ]
+    },
+    {
+        "letter": "ኸi",
+        "name": "ኸ Third Order",
+        "example_words": [
+            "ኸiቤት",
+            "ኸiምርት"
+        ]
+    },
+    {
+        "letter": "ኸa",
+        "name": "ኸ Fourth Order",
+        "example_words": [
+            "ኸaቤት",
+            "ኸaምርት"
+        ]
+    },
+    {
+        "letter": "ኸe",
+        "name": "ኸ Fifth Order",
+        "example_words": [
+            "ኸeቤት",
+            "ኸeምርት"
+        ]
+    },
+    {
+        "letter": "ኸə",
+        "name": "ኸ Sixth Order",
+        "example_words": [
+            "ኸəቤት",
+            "ኸəምርት"
+        ]
+    },
+    {
+        "letter": "ኸo",
+        "name": "ኸ Seventh Order",
+        "example_words": [
+            "ኸoቤት",
+            "ኸoምርት"
+        ]
+    },
+    {
+        "letter": "ወ",
+        "name": "ወ First Order",
+        "example_words": [
+            "ወቤት",
+            "ወምርት"
+        ]
+    },
+    {
+        "letter": "ወu",
+        "name": "ወ Second Order",
+        "example_words": [
+            "ወuቤት",
+            "ወuምርት"
+        ]
+    },
+    {
+        "letter": "ወi",
+        "name": "ወ Third Order",
+        "example_words": [
+            "ወiቤት",
+            "ወiምርት"
+        ]
+    },
+    {
+        "letter": "ወa",
+        "name": "ወ Fourth Order",
+        "example_words": [
+            "ወaቤት",
+            "ወaምርት"
+        ]
+    },
+    {
+        "letter": "ወe",
+        "name": "ወ Fifth Order",
+        "example_words": [
+            "ወeቤት",
+            "ወeምርት"
+        ]
+    },
+    {
+        "letter": "ወə",
+        "name": "ወ Sixth Order",
+        "example_words": [
+            "ወəቤት",
+            "ወəምርት"
+        ]
+    },
+    {
+        "letter": "ወo",
+        "name": "ወ Seventh Order",
+        "example_words": [
+            "ወoቤት",
+            "ወoምርት"
+        ]
+    },
+    {
+        "letter": "ዐ",
+        "name": "ዐ First Order",
+        "example_words": [
+            "ዐቤት",
+            "ዐምርት"
+        ]
+    },
+    {
+        "letter": "ዐu",
+        "name": "ዐ Second Order",
+        "example_words": [
+            "ዐuቤት",
+            "ዐuምርት"
+        ]
+    },
+    {
+        "letter": "ዐi",
+        "name": "ዐ Third Order",
+        "example_words": [
+            "ዐiቤት",
+            "ዐiምርት"
+        ]
+    },
+    {
+        "letter": "ዐa",
+        "name": "ዐ Fourth Order",
+        "example_words": [
+            "ዐaቤት",
+            "ዐaምርት"
+        ]
+    },
+    {
+        "letter": "ዐe",
+        "name": "ዐ Fifth Order",
+        "example_words": [
+            "ዐeቤት",
+            "ዐeምርት"
+        ]
+    },
+    {
+        "letter": "ዐə",
+        "name": "ዐ Sixth Order",
+        "example_words": [
+            "ዐəቤት",
+            "ዐəምርት"
+        ]
+    },
+    {
+        "letter": "ዐo",
+        "name": "ዐ Seventh Order",
+        "example_words": [
+            "ዐoቤት",
+            "ዐoምርት"
+        ]
+    },
+    {
+        "letter": "ዘ",
+        "name": "ዘ First Order",
+        "example_words": [
+            "ዘቤት",
+            "ዘምርት"
+        ]
+    },
+    {
+        "letter": "ዘu",
+        "name": "ዘ Second Order",
+        "example_words": [
+            "ዘuቤት",
+            "ዘuምርት"
+        ]
+    },
+    {
+        "letter": "ዘi",
+        "name": "ዘ Third Order",
+        "example_words": [
+            "ዘiቤት",
+            "ዘiምርት"
+        ]
+    },
+    {
+        "letter": "ዘa",
+        "name": "ዘ Fourth Order",
+        "example_words": [
+            "ዘaቤት",
+            "ዘaምርት"
+        ]
+    },
+    {
+        "letter": "ዘe",
+        "name": "ዘ Fifth Order",
+        "example_words": [
+            "ዘeቤት",
+            "ዘeምርት"
+        ]
+    },
+    {
+        "letter": "ዘə",
+        "name": "ዘ Sixth Order",
+        "example_words": [
+            "ዘəቤት",
+            "ዘəምርት"
+        ]
+    },
+    {
+        "letter": "ዘo",
+        "name": "ዘ Seventh Order",
+        "example_words": [
+            "ዘoቤት",
+            "ዘoምርት"
+        ]
+    },
+    {
+        "letter": "ዠ",
+        "name": "ዠ First Order",
+        "example_words": [
+            "ዠቤት",
+            "ዠምርት"
+        ]
+    },
+    {
+        "letter": "ዠu",
+        "name": "ዠ Second Order",
+        "example_words": [
+            "ዠuቤት",
+            "ዠuምርት"
+        ]
+    },
+    {
+        "letter": "ዠi",
+        "name": "ዠ Third Order",
+        "example_words": [
+            "ዠiቤት",
+            "ዠiምርት"
+        ]
+    },
+    {
+        "letter": "ዠa",
+        "name": "ዠ Fourth Order",
+        "example_words": [
+            "ዠaቤት",
+            "ዠaምርት"
+        ]
+    },
+    {
+        "letter": "ዠe",
+        "name": "ዠ Fifth Order",
+        "example_words": [
+            "ዠeቤት",
+            "ዠeምርት"
+        ]
+    },
+    {
+        "letter": "ዠə",
+        "name": "ዠ Sixth Order",
+        "example_words": [
+            "ዠəቤት",
+            "ዠəምርት"
+        ]
+    },
+    {
+        "letter": "ዠo",
+        "name": "ዠ Seventh Order",
+        "example_words": [
+            "ዠoቤት",
+            "ዠoምርት"
+        ]
+    },
+    {
+        "letter": "የ",
+        "name": "የ First Order",
+        "example_words": [
+            "የቤት",
+            "የምርት"
+        ]
+    },
+    {
+        "letter": "የu",
+        "name": "የ Second Order",
+        "example_words": [
+            "የuቤት",
+            "የuምርት"
+        ]
+    },
+    {
+        "letter": "የi",
+        "name": "የ Third Order",
+        "example_words": [
+            "የiቤት",
+            "የiምርት"
+        ]
+    },
+    {
+        "letter": "የa",
+        "name": "የ Fourth Order",
+        "example_words": [
+            "የaቤት",
+            "የaምርት"
+        ]
+    },
+    {
+        "letter": "የe",
+        "name": "የ Fifth Order",
+        "example_words": [
+            "የeቤት",
+            "የeምርት"
+        ]
+    },
+    {
+        "letter": "የə",
+        "name": "የ Sixth Order",
+        "example_words": [
+            "የəቤት",
+            "የəምርት"
+        ]
+    },
+    {
+        "letter": "የo",
+        "name": "የ Seventh Order",
+        "example_words": [
+            "የoቤት",
+            "የoምርት"
+        ]
+    },
+    {
+        "letter": "ደ",
+        "name": "ደ First Order",
+        "example_words": [
+            "ደቤት",
+            "ደምርት"
+        ]
+    },
+    {
+        "letter": "ደu",
+        "name": "ደ Second Order",
+        "example_words": [
+            "ደuቤት",
+            "ደuምርት"
+        ]
+    },
+    {
+        "letter": "ደi",
+        "name": "ደ Third Order",
+        "example_words": [
+            "ደiቤት",
+            "ደiምርት"
+        ]
+    },
+    {
+        "letter": "ደa",
+        "name": "ደ Fourth Order",
+        "example_words": [
+            "ደaቤት",
+            "ደaምርት"
+        ]
+    },
+    {
+        "letter": "ደe",
+        "name": "ደ Fifth Order",
+        "example_words": [
+            "ደeቤት",
+            "ደeምርት"
+        ]
+    },
+    {
+        "letter": "ደə",
+        "name": "ደ Sixth Order",
+        "example_words": [
+            "ደəቤት",
+            "ደəምርት"
+        ]
+    },
+    {
+        "letter": "ደo",
+        "name": "ደ Seventh Order",
+        "example_words": [
+            "ደoቤት",
+            "ደoምርት"
+        ]
+    },
+    {
+        "letter": "ጀ",
+        "name": "ጀ First Order",
+        "example_words": [
+            "ጀቤት",
+            "ጀምርት"
+        ]
+    },
+    {
+        "letter": "ጀu",
+        "name": "ጀ Second Order",
+        "example_words": [
+            "ጀuቤት",
+            "ጀuምርት"
+        ]
+    },
+    {
+        "letter": "ጀi",
+        "name": "ጀ Third Order",
+        "example_words": [
+            "ጀiቤት",
+            "ጀiምርት"
+        ]
+    },
+    {
+        "letter": "ጀa",
+        "name": "ጀ Fourth Order",
+        "example_words": [
+            "ጀaቤት",
+            "ጀaምርት"
+        ]
+    },
+    {
+        "letter": "ጀe",
+        "name": "ጀ Fifth Order",
+        "example_words": [
+            "ጀeቤት",
+            "ጀeምርት"
+        ]
+    },
+    {
+        "letter": "ጀə",
+        "name": "ጀ Sixth Order",
+        "example_words": [
+            "ጀəቤት",
+            "ጀəምርት"
+        ]
+    },
+    {
+        "letter": "ጀo",
+        "name": "ጀ Seventh Order",
+        "example_words": [
+            "ጀoቤት",
+            "ጀoምርት"
+        ]
+    },
+    {
+        "letter": "ገ",
+        "name": "ገ First Order",
+        "example_words": [
+            "ገቤት",
+            "ገምርት"
+        ]
+    },
+    {
+        "letter": "ገu",
+        "name": "ገ Second Order",
+        "example_words": [
+            "ገuቤት",
+            "ገuምርት"
+        ]
+    },
+    {
+        "letter": "ገi",
+        "name": "ገ Third Order",
+        "example_words": [
+            "ገiቤት",
+            "ገiምርት"
+        ]
+    },
+    {
+        "letter": "ገa",
+        "name": "ገ Fourth Order",
+        "example_words": [
+            "ገaቤት",
+            "ገaምርት"
+        ]
+    },
+    {
+        "letter": "ገe",
+        "name": "ገ Fifth Order",
+        "example_words": [
+            "ገeቤት",
+            "ገeምርት"
+        ]
+    },
+    {
+        "letter": "ገə",
+        "name": "ገ Sixth Order",
+        "example_words": [
+            "ገəቤት",
+            "ገəምርት"
+        ]
+    },
+    {
+        "letter": "ገo",
+        "name": "ገ Seventh Order",
+        "example_words": [
+            "ገoቤት",
+            "ገoምርት"
+        ]
+    },
+    {
+        "letter": "ጠ",
+        "name": "ጠ First Order",
+        "example_words": [
+            "ጠቤት",
+            "ጠምርት"
+        ]
+    },
+    {
+        "letter": "ጠu",
+        "name": "ጠ Second Order",
+        "example_words": [
+            "ጠuቤት",
+            "ጠuምርት"
+        ]
+    },
+    {
+        "letter": "ጠi",
+        "name": "ጠ Third Order",
+        "example_words": [
+            "ጠiቤት",
+            "ጠiምርት"
+        ]
+    },
+    {
+        "letter": "ጠa",
+        "name": "ጠ Fourth Order",
+        "example_words": [
+            "ጠaቤት",
+            "ጠaምርት"
+        ]
+    },
+    {
+        "letter": "ጠe",
+        "name": "ጠ Fifth Order",
+        "example_words": [
+            "ጠeቤት",
+            "ጠeምርት"
+        ]
+    },
+    {
+        "letter": "ጠə",
+        "name": "ጠ Sixth Order",
+        "example_words": [
+            "ጠəቤት",
+            "ጠəምርት"
+        ]
+    },
+    {
+        "letter": "ጠo",
+        "name": "ጠ Seventh Order",
+        "example_words": [
+            "ጠoቤት",
+            "ጠoምርት"
+        ]
+    },
+    {
+        "letter": "ጨ",
+        "name": "ጨ First Order",
+        "example_words": [
+            "ጨቤት",
+            "ጨምርት"
+        ]
+    },
+    {
+        "letter": "ጨu",
+        "name": "ጨ Second Order",
+        "example_words": [
+            "ጨuቤት",
+            "ጨuምርት"
+        ]
+    },
+    {
+        "letter": "ጨi",
+        "name": "ጨ Third Order",
+        "example_words": [
+            "ጨiቤት",
+            "ጨiምርት"
+        ]
+    },
+    {
+        "letter": "ጨa",
+        "name": "ጨ Fourth Order",
+        "example_words": [
+            "ጨaቤት",
+            "ጨaምርት"
+        ]
+    },
+    {
+        "letter": "ጨe",
+        "name": "ጨ Fifth Order",
+        "example_words": [
+            "ጨeቤት",
+            "ጨeምርት"
+        ]
+    },
+    {
+        "letter": "ጨə",
+        "name": "ጨ Sixth Order",
+        "example_words": [
+            "ጨəቤት",
+            "ጨəምርት"
+        ]
+    },
+    {
+        "letter": "ጨo",
+        "name": "ጨ Seventh Order",
+        "example_words": [
+            "ጨoቤት",
+            "ጨoምርት"
+        ]
+    },
+    {
+        "letter": "ጰ",
+        "name": "ጰ First Order",
+        "example_words": [
+            "ጰቤት",
+            "ጰምርት"
+        ]
+    },
+    {
+        "letter": "ጰu",
+        "name": "ጰ Second Order",
+        "example_words": [
+            "ጰuቤት",
+            "ጰuምርት"
+        ]
+    },
+    {
+        "letter": "ጰi",
+        "name": "ጰ Third Order",
+        "example_words": [
+            "ጰiቤት",
+            "ጰiምርት"
+        ]
+    },
+    {
+        "letter": "ጰa",
+        "name": "ጰ Fourth Order",
+        "example_words": [
+            "ጰaቤት",
+            "ጰaምርት"
+        ]
+    },
+    {
+        "letter": "ጰe",
+        "name": "ጰ Fifth Order",
+        "example_words": [
+            "ጰeቤት",
+            "ጰeምርት"
+        ]
+    },
+    {
+        "letter": "ጰə",
+        "name": "ጰ Sixth Order",
+        "example_words": [
+            "ጰəቤት",
+            "ጰəምርት"
+        ]
+    },
+    {
+        "letter": "ጰo",
+        "name": "ጰ Seventh Order",
+        "example_words": [
+            "ጰoቤት",
+            "ጰoምርት"
+        ]
+    },
+    {
+        "letter": "ጸ",
+        "name": "ጸ First Order",
+        "example_words": [
+            "ጸቤት",
+            "ጸምርት"
+        ]
+    },
+    {
+        "letter": "ጸu",
+        "name": "ጸ Second Order",
+        "example_words": [
+            "ጸuቤት",
+            "ጸuምርት"
+        ]
+    },
+    {
+        "letter": "ጸi",
+        "name": "ጸ Third Order",
+        "example_words": [
+            "ጸiቤት",
+            "ጸiምርት"
+        ]
+    },
+    {
+        "letter": "ጸa",
+        "name": "ጸ Fourth Order",
+        "example_words": [
+            "ጸaቤት",
+            "ጸaምርት"
+        ]
+    },
+    {
+        "letter": "ጸe",
+        "name": "ጸ Fifth Order",
+        "example_words": [
+            "ጸeቤት",
+            "ጸeምርት"
+        ]
+    },
+    {
+        "letter": "ጸə",
+        "name": "ጸ Sixth Order",
+        "example_words": [
+            "ጸəቤት",
+            "ጸəምርት"
+        ]
+    },
+    {
+        "letter": "ጸo",
+        "name": "ጸ Seventh Order",
+        "example_words": [
+            "ጸoቤት",
+            "ጸoምርት"
+        ]
+    },
+    {
+        "letter": "ፀ",
+        "name": "ፀ First Order",
+        "example_words": [
+            "ፀቤት",
+            "ፀምርት"
+        ]
+    },
+    {
+        "letter": "ፀu",
+        "name": "ፀ Second Order",
+        "example_words": [
+            "ፀuቤት",
+            "ፀuምርት"
+        ]
+    },
+    {
+        "letter": "ፀi",
+        "name": "ፀ Third Order",
+        "example_words": [
+            "ፀiቤት",
+            "ፀiምርት"
+        ]
+    },
+    {
+        "letter": "ፀa",
+        "name": "ፀ Fourth Order",
+        "example_words": [
+            "ፀaቤት",
+            "ፀaምርት"
+        ]
+    },
+    {
+        "letter": "ፀe",
+        "name": "ፀ Fifth Order",
+        "example_words": [
+            "ፀeቤት",
+            "ፀeምርት"
+        ]
+    },
+    {
+        "letter": "ፀə",
+        "name": "ፀ Sixth Order",
+        "example_words": [
+            "ፀəቤት",
+            "ፀəምርት"
+        ]
+    },
+    {
+        "letter": "ፀo",
+        "name": "ፀ Seventh Order",
+        "example_words": [
+            "ፀoቤት",
+            "ፀoምርት"
+        ]
+    },
+    {
+        "letter": "ፈ",
+        "name": "ፈ First Order",
+        "example_words": [
+            "ፈቤት",
+            "ፈምርት"
+        ]
+    },
+    {
+        "letter": "ፈu",
+        "name": "ፈ Second Order",
+        "example_words": [
+            "ፈuቤት",
+            "ፈuምርት"
+        ]
+    },
+    {
+        "letter": "ፈi",
+        "name": "ፈ Third Order",
+        "example_words": [
+            "ፈiቤት",
+            "ፈiምርት"
+        ]
+    },
+    {
+        "letter": "ፈa",
+        "name": "ፈ Fourth Order",
+        "example_words": [
+            "ፈaቤት",
+            "ፈaምርት"
+        ]
+    },
+    {
+        "letter": "ፈe",
+        "name": "ፈ Fifth Order",
+        "example_words": [
+            "ፈeቤት",
+            "ፈeምርት"
+        ]
+    },
+    {
+        "letter": "ፈə",
+        "name": "ፈ Sixth Order",
+        "example_words": [
+            "ፈəቤት",
+            "ፈəምርት"
+        ]
+    },
+    {
+        "letter": "ፈo",
+        "name": "ፈ Seventh Order",
+        "example_words": [
+            "ፈoቤት",
+            "ፈoምርት"
+        ]
+    },
+    {
+        "letter": "ፐ",
+        "name": "ፐ First Order",
+        "example_words": [
+            "ፐቤት",
+            "ፐምርት"
+        ]
+    },
+    {
+        "letter": "ፐu",
+        "name": "ፐ Second Order",
+        "example_words": [
+            "ፐuቤት",
+            "ፐuምርት"
+        ]
+    },
+    {
+        "letter": "ፐi",
+        "name": "ፐ Third Order",
+        "example_words": [
+            "ፐiቤት",
+            "ፐiምርት"
+        ]
+    },
+    {
+        "letter": "ፐa",
+        "name": "ፐ Fourth Order",
+        "example_words": [
+            "ፐaቤት",
+            "ፐaምርት"
+        ]
+    },
+    {
+        "letter": "ፐe",
+        "name": "ፐ Fifth Order",
+        "example_words": [
+            "ፐeቤት",
+            "ፐeምርት"
+        ]
+    },
+    {
+        "letter": "ፐə",
+        "name": "ፐ Sixth Order",
+        "example_words": [
+            "ፐəቤት",
+            "ፐəምርት"
+        ]
+    },
+    {
+        "letter": "ፐo",
+        "name": "ፐ Seventh Order",
+        "example_words": [
+            "ፐoቤት",
+            "ፐoምርት"
+        ]
+    }
+]
