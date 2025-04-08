@@ -37,4 +37,22 @@ class ProgressService {
     await prefs.remove(_completedKey);
     await prefs.setInt(_currentIndexKey, 0);
   }
+
+  Future<void> unlockLevel(String level) async {
+    final prefs = await SharedPreferences.getInstance();
+    switch (level) {
+      case 'Nursery':
+        await prefs.setBool('LKG_unlocked', true);
+        break;
+      case 'LKG':
+        await prefs.setBool('UKG_unlocked', true);
+        break;
+    }
+  }
+
+  Future<bool> isLevelUnlocked(String level) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (level == 'Nursery') return true;
+    return prefs.getBool('${level}_unlocked') ?? false;
+  }
 }

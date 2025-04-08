@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const LessonGridPage(),
+            builder: (context) => const SchoolLevelsPage(),
           ),
         );
         break;
@@ -168,13 +168,13 @@ class _HomePageState extends State<HomePage> {
             onGamePressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => WordPuzzleGame()),
+                MaterialPageRoute(builder: (context) => const WordPuzzleGame()),
               );
             },
             onTranslatePressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TranslationPage()),
+                MaterialPageRoute(builder: (context) => const TranslationPage()),
               );
             },
             onAchievementPressed: () => print('Rewards pressed'),

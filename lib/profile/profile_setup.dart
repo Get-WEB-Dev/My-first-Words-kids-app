@@ -40,7 +40,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
       if (_profileImage != null) {
         imagePath = _profileImage!.path;
       } else {
-        imagePath = 'assets/avatars/avatar$_selectedAvatar.png';
+        imagePath = 'assets/avatars/avatar$_selectedAvatar.jpeg';
       }
 
       await ProfileService.saveProfile(
@@ -56,7 +56,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
 
         // Show the edit profile message
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('You can edit your profile in the profile page'),
             duration: Duration(seconds: 3),
           ),
@@ -96,7 +96,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                     BoxShadow(
                       color: Colors.purple.withOpacity(0.2),
                       blurRadius: 10,
-                      offset: Offset(0, 5),
+                      offset: const Offset(0, 5),
                     ),
                   ],
                 ),
@@ -107,7 +107,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                     fontSize: 24,
                     color: Colors.deepPurple[800],
                     shadows: [
-                      Shadow(
+                      const Shadow(
                         color: Colors.white,
                         blurRadius: 2,
                         offset: Offset(1, 1),
@@ -122,13 +122,13 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
               SizedBox(
                 height: 120, // Container size
                 child: OverflowBox(
-                  maxHeight: 280, // Visual size
+                  maxHeight: 220, // Visual size
                   alignment: Alignment.topCenter,
                   child: Transform.scale(
                     scale: 1.5,
                     child: Lottie.asset(
-                      'assets/home/welcome.json',
-                      fit: BoxFit.cover,
+                      'assets/home/baby2.json',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -148,7 +148,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
                       blurRadius: 10,
-                      offset: Offset(0, 5),
+                      offset: const Offset(0, 5),
                     ),
                   ],
                 ),
@@ -171,7 +171,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                       color: Colors.pink,
                     ),
                     border: InputBorder.none,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.face,
                       color: Colors.blue,
                       size: 30,
@@ -215,11 +215,11 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                               width: 4,
                             ),
                           ),
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 45,
                             backgroundColor: Colors.transparent,
                             backgroundImage:
-                                const AssetImage('assets/home/c6.png'),
+                                AssetImage('assets/avatars/avatar1.jpeg'),
                           ),
                         ),
                       ),
@@ -241,11 +241,11 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                               width: 4,
                             ),
                           ),
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 45,
                             backgroundColor: Colors.transparent,
                             backgroundImage:
-                                const AssetImage('assets/home/c9.png'),
+                                AssetImage('assets/avatars/avatar2.jpeg'),
                           ),
                         ),
                       ),
@@ -270,7 +270,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                                 ? FileImage(_profileImage!)
                                 : null,
                             child: _profileImage == null
-                                ? Icon(Icons.add_a_photo,
+                                ? const Icon(Icons.add_a_photo,
                                     size: 40, color: Colors.purple)
                                 : null,
                           ),
@@ -294,7 +294,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
 
               // Save Button
               _isSaving
-                  ? CircularProgressIndicator(
+                  ? const CircularProgressIndicator(
                       color: Colors.purple,
                     )
                   : ElevatedButton(
@@ -313,7 +313,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                         elevation: 10,
                       ),
                       child: Text(
-                        'START THE FUN!',
+                        'START!',
                         style: GoogleFonts.luckiestGuy(
                           fontSize: 24,
                           color: Colors.white,

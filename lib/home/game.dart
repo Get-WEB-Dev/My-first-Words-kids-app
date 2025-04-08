@@ -190,7 +190,7 @@ class _WordPuzzleGameState extends State<WordPuzzleGame> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red[300],
               ),
-              child: Text('Start Over'),
+              child: const Text('Start Over'),
             ),
           ],
         ),

@@ -18,9 +18,39 @@ class ShowLesson extends StatefulWidget {
   _ShowLessonState createState() => _ShowLessonState();
 }
 
-class _ShowLessonState extends State<ShowLesson> {
+class _ShowLessonState extends State<ShowLesson>
+    with SingleTickerProviderStateMixin {
   int _currentLetterIndex = 0;
   bool _isLessonComplete = false;
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _scaleAnimation = Tween<double>(begin: 0.9, end: 1.1).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _animationController.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _playLetterSound() {
+    // Add your sound playing logic here
+    _animationController.forward(from: 0.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +88,7 @@ class _ShowLessonState extends State<ShowLesson> {
             ),
           ),
 
-          // Whiteboard Area
+          // Whiteboard Area with Navigation
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -74,96 +104,195 @@ class _ShowLessonState extends State<ShowLesson> {
                       offset: const Offset(0, 5),
                     ),
                   ],
+                  // border: Border.all(
+                  //   color: widget.lesson.primaryColor,
+                  //   width: 3,
+                  // ),
                 ),
                 child: _isLessonComplete
                     ? _buildCompletionScreen()
-                    : Center(
-                        child: Text(
-                          currentLetter,
-                          style: GoogleFonts.bubblegumSans(
-                            fontSize: 200,
-                            color: widget.lesson.primaryColor,
+                    : Stack(
+                        children: [
+                          // Main Letter
+                          Center(
+                            child: GestureDetector(
+                              onTap: _playLetterSound,
+                              child: AnimatedBuilder(
+                                animation: _scaleAnimation,
+                                builder: (context, child) {
+                                  return Transform.scale(
+                                    scale: _scaleAnimation.value,
+                                    child: Text(
+                                      currentLetter,
+                                      style: GoogleFonts.bubblegumSans(
+                                        fontSize: 200,
+                                        color: widget.lesson.primaryColor,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 10,
+                                            color:
+                                                Colors.black.withOpacity(0.2),
+                                            offset: const Offset(3, 3),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
                           ),
-                        ),
+
+                          // Navigation Controls (inside whiteboard)
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            right: 0,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  // Previous Button
+                                  GestureDetector(
+                                    onTap: _currentLetterIndex > 0
+                                        ? () {
+                                            setState(() {
+                                              _currentLetterIndex--;
+                                            });
+                                          }
+                                        : null,
+                                    child: Image.asset(
+                                      'assets/home/arrowL.png',
+                                      width: 100,
+                                      height: 100,
+                                      color: _currentLetterIndex > 0
+                                          ? widget.lesson.primaryColor
+                                          : Colors.grey[300],
+                                    ),
+                                  ),
+
+                                  // Voice Button
+                                  GestureDetector(
+                                    onTap: _playLetterSound,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: widget.lesson.primaryColor,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.2),
+                                            blurRadius: 10,
+                                            spreadRadius: 2,
+                                          ),
+                                        ],
+                                      ),
+                                      padding: const EdgeInsets.all(12),
+                                      child: Image.asset(
+                                        'assets/home/c8.png',
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+
+                                  // Next/Complete Button
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (_currentLetterIndex <
+                                          widget.lesson.letters.length - 1) {
+                                        setState(() {
+                                          _currentLetterIndex++;
+                                        });
+                                      } else {
+                                        setState(() {
+                                          _isLessonComplete = true;
+                                        });
+                                        widget.onLessonComplete();
+                                        ProgressService()
+                                            .completeLesson(widget.lesson.id);
+                                      }
+                                    },
+                                    child: Image.asset(
+                                      _currentLetterIndex <
+                                              widget.lesson.letters.length - 1
+                                          ? 'assets/home/arrowR.png'
+                                          : 'assets/icons/complete.png',
+                                      width: 100,
+                                      height: 100,
+                                      color: widget.lesson.primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          // Progress Dots (inside whiteboard)
+                          Positioned(
+                            bottom: 10,
+                            top: 90,
+                            left: 0,
+                            right: 0,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.7),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: widget.lesson.primaryColor,
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: List.generate(
+                                    widget.lesson.letters.length,
+                                    (index) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4.0),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _currentLetterIndex = index;
+                                          });
+                                        },
+                                        child: Container(
+                                          width: 14,
+                                          height: 14,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: index == _currentLetterIndex
+                                                ? widget.lesson.primaryColor
+                                                : Colors.grey.withOpacity(0.3),
+                                            border: Border.all(
+                                              color:
+                                                  index == _currentLetterIndex
+                                                      ? Colors.black
+                                                          .withOpacity(0.2)
+                                                      : Colors.transparent,
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
               ),
             ),
           ),
-
-          // Navigation Buttons
-          if (!_isLessonComplete)
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Previous Button
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 40,
-                      color: _currentLetterIndex > 0
-                          ? widget.lesson.primaryColor
-                          : Colors.grey,
-                    ),
-                    onPressed: _currentLetterIndex > 0
-                        ? () {
-                            setState(() {
-                              _currentLetterIndex--;
-                            });
-                          }
-                        : null,
-                  ),
-
-                  // Progress Dots
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      widget.lesson.letters.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: index == _currentLetterIndex
-                                ? widget.lesson.primaryColor
-                                : Colors.grey.withOpacity(0.3),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Next/Complete Button
-                  IconButton(
-                    icon: Icon(
-                      _currentLetterIndex < widget.lesson.letters.length - 1
-                          ? Icons.arrow_forward
-                          : Icons.check_circle,
-                      size: 40,
-                      color: widget.lesson.primaryColor,
-                    ),
-                    onPressed: () {
-                      if (_currentLetterIndex <
-                          widget.lesson.letters.length - 1) {
-                        setState(() {
-                          _currentLetterIndex++;
-                        });
-                      } else {
-                        // Complete the lesson
-                        setState(() {
-                          _isLessonComplete = true;
-                        });
-                        widget.onLessonComplete();
-                        ProgressService().completeLesson(widget.lesson.id);
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ),
         ],
       ),
     );
@@ -205,6 +334,8 @@ class _ShowLessonState extends State<ShowLesson> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
+              elevation: 5,
+              shadowColor: Colors.black.withOpacity(0.3),
             ),
             onPressed: () => Navigator.pop(context),
             child: Text(

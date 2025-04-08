@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'dart:convert';
+import 'package:lottie/lottie.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TranslationPage extends StatefulWidget {
   const TranslationPage({super.key});
@@ -19,6 +21,7 @@ class _TranslationPageState extends State<TranslationPage> {
   List<Map<String, dynamic>> suggestions = [];
   FocusNode inputFocusNode = FocusNode();
   bool showSuggestions = false;
+  bool _isSpeaking = false;
 
   @override
   void initState() {
@@ -45,7 +48,7 @@ class _TranslationPageState extends State<TranslationPage> {
         words = data['words'] ?? [];
       });
     } catch (e) {
-      print('Error loading words: $e');
+      debugPrint('Error loading words: $e');
     }
   }
 
@@ -79,6 +82,7 @@ class _TranslationPageState extends State<TranslationPage> {
       showSuggestions = false;
       inputFocusNode.unfocus();
     });
+    _celebrateTranslation();
   }
 
   String _getDisplayText(Map<String, dynamic> word) {
@@ -94,7 +98,22 @@ class _TranslationPageState extends State<TranslationPage> {
 
   Future<void> playAudio(String? audioFile) async {
     if (audioFile == null || audioFile.isEmpty) return;
+    setState(() => _isSpeaking = true);
     await audioPlayer.play(AssetSource('audio/$audioFile'));
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() => _isSpeaking = false);
+  }
+
+  void _celebrateTranslation() {
+    // You can add confetti animation or other celebration effects here
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content:
+            Text('Great job! 🎉', style: GoogleFonts.comicNeue(fontSize: 20)),
+        backgroundColor: Colors.green,
+        duration: const Duration(seconds: 1),
+      ),
+    );
   }
 
   void translateWord() {
@@ -122,78 +141,117 @@ class _TranslationPageState extends State<TranslationPage> {
       showResults = true;
       showSuggestions = false;
     });
+
+    if (foundWord.isNotEmpty) {
+      _celebrateTranslation();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[50],
+      backgroundColor: const Color(0xFFF5E8FF), // Light purple background
       appBar: AppBar(
-        title: const Text(
-          'Kid Translator',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'ComicNeue',
+        title: Text(
+          'Magic Translator',
+          style: GoogleFonts.luckiestGuy(
+            fontSize: 32,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                color: Colors.purple.withOpacity(0.5),
+                blurRadius: 4,
+                offset: const Offset(2, 2),
+              ),
+            ],
           ),
         ),
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.purple,
         centerTitle: true,
+        elevation: 10,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            // Animated header
+            Lottie.asset(
+              'assets/home/magic_wand.json',
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+
             // Input area with suggestions
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                TextField(
-                  controller: inputController,
-                  focusNode: inputFocusNode,
-                  decoration: InputDecoration(
-                    labelText: 'Enter a word',
-                    labelStyle: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.deepPurple,
-                      fontFamily: 'ComicNeue',
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
                   ),
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontFamily: 'ComicNeue',
+                  child: TextField(
+                    controller: inputController,
+                    focusNode: inputFocusNode,
+                    decoration: InputDecoration(
+                      labelText: 'Type a magic word...',
+                      labelStyle: GoogleFonts.comicNeue(
+                        fontSize: 20,
+                        color: Colors.purple,
+                      ),
+                      border: InputBorder.none,
+                      prefixIcon:
+                          const Icon(Icons.search, color: Colors.purple),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 20),
+                      suffixIcon: inputController.text.isNotEmpty
+                          ? IconButton(
+                              icon:
+                                  const Icon(Icons.clear, color: Colors.purple),
+                              onPressed: () {
+                                inputController.clear();
+                                setState(() {
+                                  showResults = false;
+                                  showSuggestions = false;
+                                });
+                              },
+                            )
+                          : null,
+                    ),
+                    style: GoogleFonts.comicNeue(
+                      fontSize: 22,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        showSuggestions = inputController.text.isNotEmpty &&
+                            suggestions.isNotEmpty;
+                      });
+                    },
+                    onSubmitted: (_) => translateWord(),
                   ),
-                  onTap: () {
-                    setState(() {
-                      showSuggestions = inputController.text.isNotEmpty &&
-                          suggestions.isNotEmpty;
-                    });
-                  },
-                  onSubmitted: (_) => translateWord(),
                 ),
                 if (showSuggestions)
                   Material(
                     elevation: 4,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(15),
-                    ),
+                    borderRadius: BorderRadius.circular(15),
                     child: Container(
                       constraints: const BoxConstraints(maxHeight: 200),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                        ),
-                        border: Border.all(color: Colors.grey[300]!),
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.purple[100]!),
                       ),
                       child: ListView.builder(
                         shrinkWrap: true,
@@ -201,11 +259,12 @@ class _TranslationPageState extends State<TranslationPage> {
                         itemBuilder: (context, index) {
                           final word = suggestions[index];
                           return ListTile(
+                            leading: const Icon(Icons.auto_awesome,
+                                color: Colors.purple),
                             title: Text(
                               _getDisplayText(word),
-                              style: const TextStyle(
+                              style: GoogleFonts.comicNeue(
                                 fontSize: 20,
-                                fontFamily: 'ComicNeue',
                               ),
                             ),
                             onTap: () => _selectSuggestion(word),
@@ -219,35 +278,44 @@ class _TranslationPageState extends State<TranslationPage> {
 
             const SizedBox(height: 20),
 
-            // Translate button
+            // Magic translate button
             ElevatedButton(
               onPressed: translateWord,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.orange,
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(50),
                 ),
+                elevation: 8,
+                shadowColor: Colors.orange.withOpacity(0.5),
               ),
-              child: const Text(
-                'Translate',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontFamily: 'ComicNeue',
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Lottie.asset(
+                    'assets/home/sparkle.json',
+                    height: 30,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Abracadabra!',
+                    style: GoogleFonts.luckiestGuy(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
             // Results area
             if (showResults)
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     if (currentTranslation != null) ...[
                       if (!_isInputLanguage(currentTranslation!['english']))
@@ -255,28 +323,37 @@ class _TranslationPageState extends State<TranslationPage> {
                           'English',
                           currentTranslation!['english'] ?? 'Not available',
                           currentTranslation!['audio_english'],
+                          Colors.blue[100]!,
                         ),
                       if (!_isInputLanguage(currentTranslation!['amharic']))
                         _buildTranslationCard(
                           'አማርኛ',
                           currentTranslation!['amharic'] ?? 'Not available',
                           currentTranslation!['audio_amharic'],
+                          Colors.green[100]!,
                         ),
                       if (!_isInputLanguage(currentTranslation!['afaan_oromo']))
                         _buildTranslationCard(
                           'Afaan Oromo',
                           currentTranslation!['afaan_oromo'] ?? 'Not available',
                           currentTranslation!['audio_oromo'],
+                          Colors.yellow[100]!,
                         ),
                     ] else
-                      const Text(
-                        'Word not found!',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.red,
-                          fontFamily: 'ComicNeue',
-                        ),
-                        textAlign: TextAlign.center,
+                      Column(
+                        children: [
+                          Lottie.asset(
+                            'assets/home/confused.json',
+                            height: 150,
+                          ),
+                          Text(
+                            'Oops! No magic word found!',
+                            style: GoogleFonts.comicNeue(
+                              fontSize: 24,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
                   ],
                 ),
@@ -294,46 +371,54 @@ class _TranslationPageState extends State<TranslationPage> {
   }
 
   Widget _buildTranslationCard(
-      String language, String text, String? audioFile) {
+      String language, String text, String? audioFile, Color cardColor) {
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(20),
       ),
-      color: Colors.white,
+      color: cardColor,
       margin: const EdgeInsets.only(bottom: 15),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              language,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-                fontFamily: 'ComicNeue',
-              ),
-            ),
-            const SizedBox(height: 10),
             Row(
               children: [
-                Expanded(
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontFamily: 'ComicNeue',
-                    ),
+                Text(
+                  language,
+                  style: GoogleFonts.luckiestGuy(
+                    fontSize: 22,
+                    color: Colors.purple,
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.volume_up, size: 30),
-                  color: Colors.blue,
-                  onPressed: () => playAudio(audioFile),
-                ),
+                const Spacer(),
+                _isSpeaking && audioFile != null
+                    ? Lottie.asset(
+                        'assets/home/speaking.json',
+                        height: 30,
+                      )
+                    : IconButton(
+                        icon: const Icon(Icons.volume_up, size: 30),
+                        color: Colors.purple,
+                        onPressed: () => playAudio(audioFile),
+                      ),
               ],
+            ),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(
+                text,
+                style: GoogleFonts.comicNeue(
+                  fontSize: 28,
+                ),
+              ),
             ),
           ],
         ),

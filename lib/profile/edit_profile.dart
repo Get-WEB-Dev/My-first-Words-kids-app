@@ -64,8 +64,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
       'name': _nameController.text,
       'profileImagePath': _profileImage?.path ??
           (_selectedAvatar == 1
-              ? 'assets/avatars/avatar1.png'
-              : 'assets/avatars/avatar2.png'),
+              ? 'assets/avatars/avatar1.jpeg'
+              : 'assets/avatars/avatar2.jpeg'),
       'fullName': _fullNameController.text, // Make sure these are included
       'age': _ageController.text,
       'level': _levelController.text,
@@ -127,10 +127,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         width: 4,
                       ),
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 40,
                       backgroundImage:
-                          const AssetImage('assets/avatars/avatar1.png'),
+                          AssetImage('assets/avatars/avatar1.jpeg'),
                     ),
                   ),
                 ),
@@ -175,10 +175,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         width: 4,
                       ),
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 40,
                       backgroundImage:
-                          const AssetImage('assets/avatars/avatar2.png'),
+                          AssetImage('assets/avatars/avatar2.jpeg'),
                     ),
                   ),
                 ),
