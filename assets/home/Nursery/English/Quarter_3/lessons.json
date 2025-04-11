@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "title": "Lesson 1: Letters A-D",
+    "type": "lesson",
+    "quarter": 3,
+    "letters": ["A", "B", "C", "D"],
+    "primaryColor": "#F9A825",
+    "secondaryColor": "#FFF3E0"
+  },
+  {
+    "id": 2,
+    "title": "Lesson 2: Letters E-H",
+    "type": "lesson",
+    "letters": ["E", "F", "G", "H"],
+    "primaryColor": "#7B1FA2",
+    "secondaryColor": "#E1BEE7"
+  },
+  {
+    "id": 3,
+    "title": "Alphabet Quiz 1 (A-H)",
+    "type": "quiz",
+    "category": "ABC Letters",
+    "letters": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "questions": [
+      {
+        "question": "Which letter comes after B?",
+        "options": ["A", "C", "D", "E"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Find the missing letter: A, _, C, D",
+        "options": ["B", "E", "G", "H"],
+        "correctAnswer": 0
+      },
+      {
+        "question": "Which of these is NOT in A-H?",
+        "options": ["C", "F", "I", "D"],
+        "correctAnswer": 2
+      }
+    ],
+    "primaryColor": "#0288D1",
+    "secondaryColor": "#B3E5FC"
+  },
+  {
+    "id": 4,
+    "title": "Lesson 3: Letters I-L",
+    "type": "lesson",
+    "letters": ["I", "J", "K", "L"],
+    "primaryColor": "#388E3C",
+    "secondaryColor": "#C8E6C9"
+  },
+  {
+    "id": 5,
+    "title": "Lesson 4: Letters M-P",
+    "type": "lesson",
+    "letters": ["M", "N", "O", "P"],
+    "primaryColor": "#D32F2F",
+    "secondaryColor": "#FFCDD2"
+  },
+  {
+    "id": 6,
+    "title": "Alphabet Quiz 2 (I-P)",
+    "type": "quiz",
+    "category": "ABC Letters",
+    "letters": ["I", "J", "K", "L", "M", "N", "O", "P"],
+    "questions": [
+      {
+        "question": "Which letter comes before K?",
+        "options": ["I", "J", "L", "M"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Find the vowel in: J, K, L, _",
+        "options": ["M", "O", "P", "N"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Complete the sequence: M, N, O, _",
+        "options": ["P", "Q", "L", "K"],
+        "correctAnswer": 0
+      }
+    ],
+    "primaryColor": "#7B1FA2",
+    "secondaryColor": "#E1BEE7"
+  },
+  {
+    "id": 7,
+    "title": "Alphabet Quiz 1 (A-H)",
+    "type": "quiz",
+    "category": "ABC",
+    "letters": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "questions": [
+      {
+        "question": "Which letter comes after B?",
+        "options": ["A", "C", "D", "E"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Find the missing letter: A, _, C, D",
+        "options": ["B", "E", "G", "H"],
+        "correctAnswer": 0
+      },
+      {
+        "question": "Which of these is NOT in A-H?",
+        "options": ["C", "F", "I", "D"],
+        "correctAnswer": 2
+      }
+    ],
+    "primaryColor": "#0288D1",
+    "secondaryColor": "#B3E5FC"
+  }
+]

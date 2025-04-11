@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'lesson.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class QuizScreen extends StatefulWidget {
   final Lesson quiz;
@@ -21,27 +23,82 @@ class _QuizScreenState extends State<QuizScreen> {
   int _score = 0;
   bool _quizCompleted = false;
   List<int?> _selectedAnswers = [];
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool _isPlaying = false;
 
   @override
   void initState() {
     super.initState();
     _selectedAnswers = List.filled(widget.quiz.questions!.length, null);
+    _playQuestionAudio();
   }
 
-  void _answerQuestion(int selectedIndex) {
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  Future<void> _playQuestionAudio() async {
+    final currentQuestion = widget.quiz.questions![_currentQuestionIndex];
+    if (currentQuestion.promptAudio == null) return;
+
+    try {
+      // Set audio context for physical device
+      await _audioPlayer.setAudioContext(
+        AudioContext(
+          android: AudioContextAndroid(
+            contentType: AndroidContentType.music,
+            // usage: AndroidUsage.media,
+            audioFocus: AndroidAudioFocus.gainTransient,
+          ),
+          iOS: AudioContextIOS(
+            category: AVAudioSessionCategory.playback,
+            options: [AVAudioSessionOptions.mixWithOthers],
+          ),
+        ),
+      );
+
+      await _audioPlayer.stop(); // Clear previous playback
+      await _audioPlayer.setVolume(1.0); // Max volume
+      await _audioPlayer.play(AssetSource(currentQuestion.promptAudio!));
+
+      debugPrint('✅ Playing: ${currentQuestion.promptAudio}');
+    } catch (e) {
+      debugPrint('❌ Audio error: $e');
+    }
+  }
+
+  void _completeQuiz() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('quiz_score_${widget.quiz.id}', _score);
+    widget.onComplete();
+    Navigator.pop(context, _score);
+  }
+
+  Future<void> _answerQuestion(int selectedIndex) async {
+    final isCorrect = selectedIndex ==
+        widget.quiz.questions![_currentQuestionIndex].correctIndex;
+
+    final prefs = await SharedPreferences.getInstance();
+    final quizResults =
+        prefs.getStringList('quiz_results_${widget.quiz.id}') ?? [];
+    quizResults.add(isCorrect ? '1' : '0');
+    await prefs.setStringList('quiz_results_${widget.quiz.id}', quizResults);
+
     setState(() {
       _selectedAnswers[_currentQuestionIndex] = selectedIndex;
 
-      if (selectedIndex ==
-          widget.quiz.questions![_currentQuestionIndex].correctAnswer) {
+      if (isCorrect) {
         _score++;
       }
 
       if (_currentQuestionIndex < widget.quiz.questions!.length - 1) {
         _currentQuestionIndex++;
+        _playQuestionAudio(); // Play audio for next question
       } else {
         _quizCompleted = true;
-        widget.onComplete();
+        _completeQuiz();
       }
     });
   }
@@ -50,6 +107,7 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_currentQuestionIndex > 0) {
       setState(() {
         _currentQuestionIndex--;
+        _playQuestionAudio(); // Play audio for previous question
       });
     }
   }
@@ -77,20 +135,18 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
       body: Column(
         children: [
-          // Progress bar
           LinearProgressIndicator(
             value: progress,
             backgroundColor: Colors.grey[300],
             valueColor: AlwaysStoppedAnimation<Color>(widget.quiz.primaryColor),
             minHeight: 10,
           ),
-
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: _quizCompleted
                   ? _buildResults()
-                  : _buildQuestion(currentQuestion),
+                  : _buildTapLetterQuestion(currentQuestion),
             ),
           ),
         ],
@@ -98,15 +154,26 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  Widget _buildQuestion(QuizQuestion question) {
+  Widget _buildTapLetterQuestion(QuizQuestion question) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Question Text
+        // Audio Play Button
+        IconButton(
+          icon: Icon(
+            _isPlaying ? Icons.volume_up : Icons.volume_up_outlined,
+            size: 40,
+            color: widget.quiz.primaryColor,
+          ),
+          onPressed: _isPlaying ? null : _playQuestionAudio,
+        ),
+        const SizedBox(height: 10),
+
+        // Prompt Text
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Text(
-            question.question,
+            question.prompt,
             style: GoogleFonts.comicNeue(
               fontSize: 28,
               fontWeight: FontWeight.bold,
@@ -116,37 +183,47 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
 
-        // Options
+        // Image (if available)
+        if (question.image != null && question.image!.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Image.asset(
+              question.image!,
+              height: 150,
+            ),
+          ),
+
+        // Letter Options
         Expanded(
-          child: ListView.builder(
-            itemCount: question.options.length,
-            itemBuilder: (context, index) {
+          child: GridView.count(
+            crossAxisCount: 2,
+            childAspectRatio: 1.5,
+            padding: const EdgeInsets.all(20),
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            children: List.generate(question.letters!.length, (index) {
               final isSelected =
                   _selectedAnswers[_currentQuestionIndex] == index;
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isSelected
-                        ? widget.quiz.primaryColor.withOpacity(0.8)
-                        : widget.quiz.primaryColor,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isSelected
+                      ? widget.quiz.primaryColor.withOpacity(0.8)
+                      : widget.quiz.primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  onPressed: () => _answerQuestion(index),
-                  child: Text(
-                    question.options[index],
-                    style: GoogleFonts.comicNeue(
-                      fontSize: 22,
-                      color: Colors.white,
-                    ),
+                ),
+                onPressed: () => _answerQuestion(index),
+                child: Text(
+                  question.letters![index],
+                  style: GoogleFonts.comicNeue(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               );
-            },
+            }),
           ),
         ),
 

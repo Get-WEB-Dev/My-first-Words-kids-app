@@ -1,84 +1,145 @@
 [
   {
     "id": 1,
-    "title": "Lesson 1: Letters A-D",
+    "title": "Letters A-F",
     "type": "lesson",
-    "letters": ["A", "B", "C", "D"],
-    "primaryColor": "#F9A825",
-    "secondaryColor": "#FFF3E0"
+    "category": "Alphabet",
+    "content": "Let's learn letters A to F",
+    "letters": ["A", "B", "C", "D", "E", "F"],
+    "words": ["Apple", "Ball", "Cat", "Dog", "Egg", "Fish"],
+    "primaryColor": "#FF5252",
+    "secondaryColor": "#FFCDD2",
+    "fontFamily": "ComicNeue-Bold",
+    "audio": "assets/home/Nursery/English/audio/letters_a-f.mp3"
   },
   {
     "id": 2,
-    "title": "Lesson 2: Letters E-H",
+    "title": "Letters G-L",
     "type": "lesson",
-    "letters": ["E", "F", "G", "H"],
-    "primaryColor": "#7B1FA2",
-    "secondaryColor": "#E1BEE7"
+    "category": "Alphabet",
+    "content": "Let's learn letters G to L",
+    "letters": ["G", "H", "I", "J", "K", "L"],
+    "words": ["Goat", "Hat", "Igloo", "Jam", "Kite", "Lion"],
+    "primaryColor": "#E040FB",
+    "secondaryColor": "#F3E5F5",
+    "fontFamily": "ComicNeue-Bold",
+    "audio": "assets/home/Nursery/English/audio/letters_g-l.mp3"
   },
   {
     "id": 3,
-    "title": "Alphabet Quiz 1 (A-H)",
-    "type": "quiz",
-    "letters": ["A", "B", "C", "D", "E", "F", "G", "H"],
-    "questions": [
-      {
-        "question": "Which letter comes after B?",
-        "options": ["A", "C", "D", "E"],
-        "correctAnswer": 1
-      },
-      {
-        "question": "Find the missing letter: A, _, C, D",
-        "options": ["B", "E", "G", "H"],
-        "correctAnswer": 0
-      },
-      {
-        "question": "Which of these is NOT in A-H?",
-        "options": ["C", "F", "I", "D"],
-        "correctAnswer": 2
-      }
-    ],
-    "primaryColor": "#0288D1",
-    "secondaryColor": "#B3E5FC"
+    "title": "Letters M-R",
+    "type": "lesson",
+    "category": "Alphabet",
+    "content": "Let's learn letters M to R",
+    "letters": ["M", "N", "O", "P", "Q", "R"],
+    "words": ["Monkey", "Nest", "Orange", "Pig", "Queen", "Rabbit"],
+    "primaryColor": "#536DFE",
+    "secondaryColor": "#E8EAF6",
+    "fontFamily": "ComicNeue-Bold",
+    "audio": "assets/home/Nursery/English/audio/letters_m-r.mp3"
   },
   {
     "id": 4,
-    "title": "Lesson 3: Letters I-L",
-    "type": "lesson",
-    "letters": ["I", "J", "K", "L"],
-    "primaryColor": "#388E3C",
-    "secondaryColor": "#C8E6C9"
+    "type": "quiz",
+    "title": "Letter Tap Game",
+    "questions": [
+      {
+        "type": "tap_letter",
+        "prompt": "Find the letter B",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 1
+      },
+      {
+        "type": "tap_letter",
+        "prompt": "Find the letter A",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 0
+      },
+      {
+        "type": "tap_letter",
+        "prompt": "Find the letter D",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 3
+      },
+      {
+        "type": "tap_letter",
+        "prompt": "Find the letter F",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "F", "D"],
+        "correctIndex": 2
+      }
+    ]
   },
   {
     "id": 5,
-    "title": "Lesson 4: Letters M-P",
+    "title": "Letters S-X",
     "type": "lesson",
-    "letters": ["M", "N", "O", "P"],
-    "primaryColor": "#D32F2F",
-    "secondaryColor": "#FFCDD2"
+    "category": "Alphabet",
+    "content": "Let's learn letters S to X",
+    "letters": ["S", "T", "U", "V", "W", "X"],
+    "words": ["Sun", "Tree", "Umbrella", "Van", "Water", "Xylophone"],
+    "primaryColor": "#4CAF50",
+    "secondaryColor": "#E8F5E9",
+    "fontFamily": "ComicNeue-Bold",
+    "audio": "assets/home/Nursery/English/audio/letters_s-x.mp3"
   },
   {
     "id": 6,
-    "title": "Alphabet Quiz 2 (I-P)",
+    "title": "Letters Y-Z & Review",
+    "type": "lesson",
+    "category": "Alphabet",
+    "content": "Let's learn Y, Z and review all letters",
+    "letters": ["Y", "Z"],
+    "words": ["Yak", "Zebra"],
+    "primaryColor": "#FF9800",
+    "secondaryColor": "#FFF3E0",
+    "fontFamily": "ComicNeue-Bold",
+    "audio": "assets/home/Nursery/English/audio/letters_y-z.mp3"
+  },
+  {
+    "id": 7,
     "type": "quiz",
-    "letters": ["I", "J", "K", "L", "M", "N", "O", "P"],
+    "title": "Letter Tap Game",
     "questions": [
       {
-        "question": "Which letter comes before K?",
-        "options": ["I", "J", "L", "M"],
-        "correctAnswer": 1
+        "type": "tap_letter",
+        "prompt": "Find the letter B",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "kid-b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 1
       },
       {
-        "question": "Find the vowel in: J, K, L, _",
-        "options": ["M", "O", "P", "N"],
-        "correctAnswer": 1
+        "type": "tap_letter",
+        "prompt": "Find the letter A",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 0
       },
       {
-        "question": "Complete the sequence: M, N, O, _",
-        "options": ["P", "Q", "L", "K"],
-        "correctAnswer": 0
+        "type": "tap_letter",
+        "prompt": "Find the letter D",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "C", "D"],
+        "correctIndex": 3
+      },
+      {
+        "type": "tap_letter",
+        "prompt": "Find the letter F",
+        "image": "assets/images/letter_b.png",
+        "promptAudio": "assets/audio/find_b.mp3",
+        "letters": ["A", "B", "F", "D"],
+        "correctIndex": 2
       }
-    ],
-    "primaryColor": "#7B1FA2",
-    "secondaryColor": "#E1BEE7"
+    ]
   }
 ]

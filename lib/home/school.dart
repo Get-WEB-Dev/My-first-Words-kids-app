@@ -8,6 +8,7 @@ import 'navbar.dart';
 import 'showgrid.dart';
 import 'progress.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'LanguageSelectionScreen.dart';
 
 class SchoolLevelsPage extends StatefulWidget {
   const SchoolLevelsPage({super.key});
@@ -137,7 +138,7 @@ class _SchoolLevelsPageState extends State<SchoolLevelsPage> {
   void _navigateToLessons(String level) async {
     final levelCompleted = await Navigator.of(context).push<bool>(
           MaterialPageRoute(
-            builder: (context) => LessonGridPage(level: level),
+            builder: (context) => LanguageSelectionScreen(level: level),
           ),
         ) ??
         false;

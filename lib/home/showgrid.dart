@@ -6,14 +6,19 @@ import 'lesson_screen.dart';
 import '../School/Nursery/English/Quarter 1/quiz_screen.dart';
 import '../School/Nursery/English/Quarter 1/services.dart';
 import 'progress.dart';
+import 'progress_track.dart';
+import 'quiz_progress.dart';
 import 'navbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LessonGridPage extends StatefulWidget {
   final String level;
+  final String language;
+
   const LessonGridPage({
     super.key,
     required this.level,
+    required this.language,
   });
 
   @override
@@ -23,12 +28,13 @@ class LessonGridPage extends StatefulWidget {
 class _LessonGridPageState extends State<LessonGridPage>
     with SingleTickerProviderStateMixin {
   final ProgressService _progressService = ProgressService();
+  final Map<String, int> _quizScores = {};
   List<Lesson> _items = [];
   List<bool> _isCompleted = [];
   int _currentIndex = 0;
   late AnimationController _buttonController;
   late Animation<double> _buttonAnimation;
-  List<double> _quarterProgress = [0.0, 0.0, 0.0, 0.0];
+  final List<double> _quarterProgress = [0.0, 0.0, 0.0, 0.0];
   int _currentQuarter = 0;
   final PageController _pageController = PageController();
 
@@ -60,30 +66,31 @@ class _LessonGridPageState extends State<LessonGridPage>
 
   Future<void> _loadData() async {
     try {
-      final items = await DataService.loadAllItems();
+      // Load all quarters for this level and language
+      final quarters = await DataService.loadAllQuarters(
+        widget.level,
+        widget.language,
+      );
+
+      // Combine all lessons from all quarters
+      final allItems = quarters.values.expand((x) => x).toList();
+
       final completedIds = await _progressService.getCompletedLessons();
       final currentIndex = await _progressService.getCurrentLessonIndex();
 
       setState(() {
-        _items = items;
+        _items = allItems;
         _isCompleted =
-            items.map((item) => completedIds.contains(item.id)).toList();
+            allItems.map((item) => completedIds.contains(item.id)).toList();
         _currentIndex = currentIndex;
 
-        // Calculate progress for each quarter (10 items per quarter)
-        for (int i = 0; i < 4; i++) {
-          final start = i * 10;
-          final end = (i + 1) * 10;
-          final quarterItems = _items.sublist(
-            start.clamp(0, _items.length),
-            end.clamp(0, _items.length),
-          );
-          final completedCount = quarterItems
-              .where((item) => completedIds.contains(item.id))
-              .length;
-          _quarterProgress[i] =
-              quarterItems.isEmpty ? 0.0 : completedCount / quarterItems.length;
-        }
+        // Calculate progress for each quarter
+        quarters.forEach((quarter, items) {
+          final completedCount =
+              items.where((item) => completedIds.contains(item.id)).length;
+          _quarterProgress[quarter - 1] =
+              items.isEmpty ? 0.0 : completedCount / items.length;
+        });
       });
     } catch (e) {
       debugPrint('Error loading data: $e');
@@ -127,6 +134,10 @@ class _LessonGridPageState extends State<LessonGridPage>
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
+                IconButton(
+                  icon: const Icon(Icons.leaderboard),
+                  onPressed: _showCategoryProgress,
+                ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: SizedBox(
@@ -230,60 +241,70 @@ class _LessonGridPageState extends State<LessonGridPage>
           ),
 
           Expanded(
-            child: PageView.builder(
-              controller: _pageController,
-              physics: const BouncingScrollPhysics(),
-              itemCount: 4,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentQuarter = index;
-                });
-              },
-              itemBuilder: (context, quarterIndex) {
-                // Get 10 items for this quarter
-                final start = quarterIndex * 10;
-                final end = (quarterIndex + 1) * 10;
-                final quarterItems = _items.sublist(
-                  start.clamp(0, _items.length),
-                  end.clamp(0, _items.length),
-                );
-                final quarterCompleted = _isCompleted.sublist(
-                  start.clamp(0, _isCompleted.length),
-                  end.clamp(0, _isCompleted.length),
-                );
+              child: PageView.builder(
+                  controller: _pageController,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: 4,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentQuarter = index;
+                    });
+                  },
+                  itemBuilder: (context, quarterIndex) {
+                    final quarterNumber = quarterIndex + 1;
+                    final quarterItems = _items
+                        .where((item) => item.quarter == quarterNumber)
+                        .toList();
+                    final quarterCompleted = quarterItems
+                        .map((item) => _isCompleted[_items.indexOf(item)])
+                        .toList();
+                    final isQuarterUnlocked = quarterIndex == 0 ||
+                        _quarterProgress[quarterIndex - 1] == 1.0;
 
-                return Stack(
-                  children: [
-                    // Main content grid with fun background
-                    Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/home/grid_background.png'),
-                          fit: BoxFit.cover,
+                    return Stack(
+                      children: [
+                        // Background image (applies to both locked and unlocked states)
+                        Container(
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image:
+                                  AssetImage('assets/home/grid_background.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: quarterIndex == 0 ||
-                              _quarterProgress[quarterIndex - 1] == 1.0
-                          ? GridView.builder(
-                              padding: const EdgeInsets.all(20),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 20,
-                                mainAxisSpacing: 20,
-                                childAspectRatio: 0.8,
-                              ),
-                              itemCount: quarterItems.length,
-                              itemBuilder: (context, index) => _buildItemCard(
-                                  quarterItems[index],
-                                  quarterCompleted[index],
-                                  index <= _currentIndex - start ||
-                                      (quarterIndex > 0 &&
-                                          _quarterProgress[quarterIndex - 1] ==
-                                              1.0),
-                                  index + start),
-                            )
-                          : Center(
+
+                        // Lessons grid (always visible)
+                        GridView.builder(
+                          padding: const EdgeInsets.all(20),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20,
+                            childAspectRatio: 0.8,
+                          ),
+                          itemCount: quarterItems.length,
+                          itemBuilder: (context, index) {
+                            final globalIndex =
+                                _items.indexOf(quarterItems[index]);
+                            return _buildItemCard(
+                              quarterItems[index],
+                              quarterCompleted[index],
+                              isQuarterUnlocked &&
+                                  (globalIndex <= _currentIndex),
+                              globalIndex,
+                              isQuarterUnlocked, // Pass the quarter unlocked state
+                            );
+                          },
+                        ),
+
+                        // Lock overlay (only for locked quarters)
+                        if (!isQuarterUnlocked)
+                          Container(
+                            color: Colors.black
+                                .withOpacity(0.3), // Semi-transparent overlay
+                            child: Center(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -298,24 +319,23 @@ class _LessonGridPageState extends State<LessonGridPage>
                                     style: GoogleFonts.comicNeue(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
+                          ),
+                      ],
+                    );
+                  }))
         ],
       ),
     );
   }
 
-  Widget _buildItemCard(
-      Lesson item, bool isCompleted, bool isAvailable, int globalIndex) {
+  Widget _buildItemCard(Lesson item, bool isCompleted, bool isAvailable,
+      int globalIndex, bool isQuarterUnlocked) {
     return GestureDetector(
       onTap: isAvailable ? () => _startItem(item, globalIndex) : null,
       child: AnimatedContainer(
@@ -473,24 +493,115 @@ class _LessonGridPageState extends State<LessonGridPage>
     );
   }
 
+  Widget _buildLockableItemCard(
+    Lesson item,
+    bool isCompleted,
+    bool isAvailable,
+    int index,
+    bool isQuarterUnlocked,
+  ) {
+    return Stack(
+      children: [
+        // Lesson card
+        Container(
+          decoration: BoxDecoration(
+            color: isQuarterUnlocked
+                ? item.secondaryColor.withOpacity(0.8)
+                : Colors.grey[300]!.withOpacity(0.7),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: isQuarterUnlocked ? item.primaryColor : Colors.grey,
+              width: 3,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (item.type == 'lesson')
+                _buildLessonBadge(
+                    index + 1, item.primaryColor, isQuarterUnlocked)
+              else
+                _buildQuizBadge(isQuarterUnlocked),
+              const SizedBox(height: 10),
+              Text(
+                item.title,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.comicNeue(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: isQuarterUnlocked ? Colors.black : Colors.grey[700],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Semi-transparent overlay if quarter is locked
+        if (!isQuarterUnlocked)
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+      ],
+    );
+  }
+
   Future<void> _startItem(Lesson item, int index) async {
-    if (item.type == 'lesson') {
+    // Find the actual item from the full list to ensure consistency
+    final actualItem = _items.firstWhere(
+      (i) => i.id == item.id && i.quarter == item.quarter,
+      orElse: () => item, // Fallback to the passed item if not found
+    );
+
+    if (actualItem.type == 'quiz') {
+      // Convert item.id to String once at the start for consistency
+      final itemId = actualItem.id.toString();
+
+      // Initialize with default 0 using string ID
+      _quizScores[itemId] = 0;
+
+      final score = await Navigator.push<int>(
+        context,
+        MaterialPageRoute(
+          builder: (context) => QuizScreen(
+            quiz: actualItem, // Use actualItem instead of item
+            onComplete: () => _completeItem(index),
+          ),
+        ),
+      );
+
+      debugPrint('Quiz returned score: $score');
+
+      if (score != null) {
+        setState(() {
+          _quizScores[itemId] = score; // Update using string ID
+        });
+
+        // Save and verify immediately
+        await _completeItem(index);
+
+        // Immediate save verification using string ID
+        final prefs = await SharedPreferences.getInstance();
+        final savedScore = prefs.getInt('quiz_score_$itemId');
+        debugPrint('Saved score verification: $savedScore (expected: $score)');
+
+        if (savedScore != score) {
+          debugPrint('❌ Score mismatch! Performing emergency save...');
+          await prefs.setInt('quiz_score_$itemId', score);
+          debugPrint('Emergency save completed');
+        }
+      } else {
+        debugPrint('⚠️ Quiz returned null score');
+      }
+    } else if (actualItem.type == 'lesson') {
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ShowLesson(
-            lesson: item,
+            lesson: actualItem, // Use actualItem instead of item
             onLessonComplete: () => _completeItem(index),
-          ),
-        ),
-      );
-    } else {
-      await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => QuizScreen(
-            quiz: item,
-            onComplete: () => _completeItem(index),
           ),
         ),
       );
@@ -499,6 +610,39 @@ class _LessonGridPageState extends State<LessonGridPage>
   }
 
   Future<void> _completeItem(int index) async {
+    final item = _items[index];
+
+    if (item.type == 'quiz') {
+      try {
+        // Convert ID to string explicitly
+        final quizId = item.id.toString();
+        final score = _quizScores[item.id] ?? 0;
+
+        debugPrint('Saving quiz $quizId with score: $score');
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.reload();
+
+        // Save all data with proper string IDs
+        await Future.wait([
+          prefs.setInt('quiz_score_$quizId', score),
+          prefs.setInt('total_questions_$quizId', item.questions?.length ?? 0),
+          prefs.setString('quiz_title_$quizId', item.title),
+          prefs.setString('quiz_category_$quizId', item.category),
+          prefs.setBool('quiz_completed_$quizId', true),
+        ]);
+
+        // Verification
+        final savedScore = prefs.getInt('quiz_score_$quizId');
+        debugPrint('Saved score verification: $savedScore (expected: $score)');
+
+        setState(() {
+          _isCompleted[index] = true;
+        });
+      } catch (e) {
+        debugPrint('❌ Error saving quiz results: $e');
+      }
+    }
     await _progressService.completeLesson(_items[index].id);
 
     final allCompleted = await _checkAllItemsCompleted();
@@ -586,19 +730,28 @@ class _LessonGridPageState extends State<LessonGridPage>
     );
   }
 
+  void _showCategoryProgress() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CategoryProgressPage(),
+      ),
+    );
+  }
+
   Future<void> _showResetDialog(BuildContext context) async {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Reset Progress?',
+          'Reset All Progress',
           style: GoogleFonts.comicNeue(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
         content: Text(
-          'This will reset all your progress in this level.',
+          'This will reset ALL progress including lessons AND quiz scores.',
           style: GoogleFonts.comicNeue(fontSize: 18),
         ),
         actions: [
@@ -614,14 +767,34 @@ class _LessonGridPageState extends State<LessonGridPage>
           ),
           TextButton(
             onPressed: () async {
-              await _progressService.resetProgress();
+              // Reset both lessons and quizzes
+              await _progressService
+                  .resetProgress(); // Your existing lesson reset
+              // await ProgressServices.resetQuizProgress(); // New quiz reset
+
               if (mounted) {
+                // Clear in-memory quiz scores
+                _quizScores.clear();
+
+                // Reload data and update UI
                 await _loadData();
                 Navigator.pop(context);
+
+                // Show confirmation
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content:
+                        Text('All progress and quiz scores have been reset'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+
+                // Debug verification
+                // await _debugPrintQuizStatus();
               }
             },
             child: Text(
-              'Reset',
+              'Reset All',
               style: GoogleFonts.comicNeue(
                 fontSize: 18,
                 color: Colors.red,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gech/School/Nursery/English/Quarter%201/lesson.dart';
+import '../School/Nursery/English/Quarter 1/services.dart';
 import '../profile/profile_service.dart';
 import '../profile/profile_setup.dart';
 import '../profile/profile_panel.dart';
@@ -7,9 +9,8 @@ import 'reset_dialog.dart';
 import 'bottom_navigation.dart';
 import 'middle_space.dart';
 import 'school.dart';
-import 'showgrid.dart';
+import 'progress_track.dart';
 import 'game.dart';
-import 'navbar.dart';
 import 'translate.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final List<Lesson> allItems;
   String userName = "User";
   String fullName = "ggggggg";
   String age = '5';
@@ -93,7 +95,36 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _handleTabChange(int index) {
+  List<String> _getUniqueCategories(List<Lesson> items) {
+    final categories = <String>{};
+    for (final item in items) {
+      if (item.type == 'quiz') {
+        categories.add(item.category);
+      }
+    }
+    return categories.toList();
+  }
+
+  Future<void> _navigateToProgress() async {
+    final items = await DataService.loadAllItems();
+    final categories = items
+        .where((item) => item.type == 'quiz')
+        .map((quiz) => quiz.category)
+        .toSet()
+        .toList();
+  }
+
+  void _showCategoryProgress() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CategoryProgressPage(),
+      ),
+    );
+  }
+
+// Update the _handleTabChange method
+  void _handleTabChange(int index) async {
     setState(() {
       _currentBottomIndex = index;
     });
@@ -101,19 +132,11 @@ class _HomePageState extends State<HomePage> {
     switch (index) {
       case 0:
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => Scaffold(
-                body: Center(
-                  child: CustomNavbar(
-                    onBackPressed: () => print('Back pressed'),
-                    onSettingsPressed: () => print('Settings pressed'),
-                    backButtonImage: const AssetImage('assets/home/back3.png'),
-                    settingsButtonImage: const AssetImage('assets/home/c3.png'),
-                  ),
-                ),
-              ),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CategoryProgressPage(),
+          ),
+        );
         break;
       case 1: // Home
         print('Home tapped');
@@ -174,7 +197,8 @@ class _HomePageState extends State<HomePage> {
             onTranslatePressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const TranslationPage()),
+                MaterialPageRoute(
+                    builder: (context) => const TranslationPage()),
               );
             },
             onAchievementPressed: () => print('Rewards pressed'),

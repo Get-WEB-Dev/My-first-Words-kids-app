@@ -69,8 +69,13 @@ flutter:
     - assets/first.png
     - assets/school.png
     - assets/Amharic_Full_Alphabet.json
+    - assets/kid-b.mp3
     # - assets/home/Nursery/English/Quarter 1/sequence.json
     - assets/home/Nursery/English/Quarter_1/lessons.json
+    - assets/home/Nursery/English/Quarter_2/lessons.json
+    - assets/home/Nursery/English/Quarter_3/lessons.json
+    - assets/home/Nursery/English/Quarter_4/lessons.json
+
     # - assets/home/Nursery/English/Quarter 1/quiz.json
 
   # The following line ensures that the Material Icons font is

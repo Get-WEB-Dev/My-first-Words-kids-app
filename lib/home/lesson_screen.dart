@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gech/School/Nursery/English/Quarter 1/lesson.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'progress.dart';
 import 'navbar.dart';
 
@@ -24,6 +25,7 @@ class _ShowLessonState extends State<ShowLesson>
   bool _isLessonComplete = false;
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
+  final Set<String> _completedLetters = {};
 
   @override
   void initState() {
@@ -50,6 +52,16 @@ class _ShowLessonState extends State<ShowLesson>
   void _playLetterSound() {
     // Add your sound playing logic here
     _animationController.forward(from: 0.0);
+  }
+
+  Future<void> _updateLetterProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final allLetters = widget.lesson.letters;
+    final progress = _completedLetters.length / allLetters.length;
+
+    await prefs.setDouble('abc_progress', progress);
+    await prefs.setStringList(
+        'completed_abc_letters', _completedLetters.toList());
   }
 
   @override
@@ -206,15 +218,19 @@ class _ShowLessonState extends State<ShowLesson>
                                       if (_currentLetterIndex <
                                           widget.lesson.letters.length - 1) {
                                         setState(() {
+                                          _completedLetters.add(currentLetter);
                                           _currentLetterIndex++;
+                                          _updateLetterProgress();
                                         });
                                       } else {
                                         setState(() {
+                                          _completedLetters.add(currentLetter);
                                           _isLessonComplete = true;
                                         });
                                         widget.onLessonComplete();
                                         ProgressService()
                                             .completeLesson(widget.lesson.id);
+                                        _updateLetterProgress();
                                       }
                                     },
                                     child: Image.asset(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Quiz {
   final int id;
   final String title;
+  final String category; // New field
   final List<QuizQuestion> questions;
   final Color primaryColor;
   final Color secondaryColor;
@@ -10,6 +11,7 @@ class Quiz {
   Quiz({
     required this.id,
     required this.title,
+    required this.category, // Added to constructor
     required this.questions,
     required this.primaryColor,
     required this.secondaryColor,
@@ -19,6 +21,7 @@ class Quiz {
     return Quiz(
       id: json['id'],
       title: json['title'],
+      category: json['category'] ?? 'General', // Default category
       questions: (json['questions'] as List)
           .map((question) => QuizQuestion.fromJson(question))
           .toList(),

@@ -34,6 +34,19 @@ class ProgressService {
 
   Future<void> resetProgress() async {
     final prefs = await SharedPreferences.getInstance();
+    final keys = prefs
+        .getKeys()
+        .where((key) =>
+            key.startsWith('quiz_score_') ||
+            key.startsWith('total_questions_') ||
+            key.startsWith('quiz_title_') ||
+            key.startsWith('quiz_category_') ||
+            key.startsWith('quiz_completed_'))
+        .toList();
+
+    for (var key in keys) {
+      await prefs.remove(key);
+    }
     await prefs.remove(_completedKey);
     await prefs.setInt(_currentIndexKey, 0);
   }
